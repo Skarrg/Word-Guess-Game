@@ -15,7 +15,8 @@ window.onload = function () {
     var guess;              //Most recent guess
     var guesses = [];       //previous guesses
     var wins;
-    var lives;              //#of guesses left
+    var lives = 10;         //#of guesses total
+    var livesLeft;          //guesses remaining
     var correctGuesses;
     var space;              //spaces in the word
     //Word selected at start
@@ -30,33 +31,68 @@ window.onload = function () {
             var newDiv = document.createElement('div');
             size = wordbox.offsetWidth / chosenWordA.length;
 
-            //css it up
+            //format it it up
+            newDiv.innerHTML = "_";
             newDiv.style.width = size + 'px';
             newDiv.style.height = 0.8 * size + 'px';
             newDiv.style.borderBottom = '10px';
             newDiv.style.marginRight = '10px';
             newDiv.style.textAlign = 'center';
-            //add id
+            newDiv.style.float = 'right';
+
+            //add id to be easier read
             newDiv.classList.add(chosenWordA[i]);
 
             wordbox.appendChild(newDiv);
         }
     }
 
-    //onkey up for guess and put previous guess into Guesses
-    document.onkeyup = function (event) {
-        var guess = event.key.toLowerCase();
-        guesses.push(guess);
+    //identify unique characters in the array
+    function unique_char(str1) {
+        var str = str1;
+        var uniqueL = ' ';
+        for (var x = 0; x < str.length; x++) {
+            if uniqueL.indexOf(str.charAt(x)) == -1) {
+                uniqueL += str[x];
+            }
+        }
+        return uniqueL;
     }
 
     //check to see if pressed key is in the word
-    //function letterCheck(guess) {
-    //    for (var i = 0, j = chosenWordA.length; i < j; i++) {
-    //        if (guess === chosenWordA[i] {
+    function CheckGuess(guess, chosenWordA) {
+        //=== -1 means if it's not in the array
+        if (chosenWordA.indexof(input) === -1){
 
-    //        }
-    //    }
-    //}
+        } else {
+            var letterDiv = document.getElementById(chosenWordA).querySelectorAll('.' + guess);
+            for (var i = 0; i<letterDiv.length; i++) {
+                letterDiv[i].innerHTML = guess;
+            }
+        }
+    }
+
+    //onkey up for guess and put previous guess into Guesses
+    document.onkeyup = function (event) {
+        var guess = event.key.toLowerCase();
+        if (alphabet.indexOf(guess) === -1){
+            alert("Whoops! That button wasn't a letter! please try again.")
+        } 
+
+        if (guesses.indexOf(guess) === -1 && alphabet.indexOf !== -1){
+            guesses.push(guess);
+            livesLeft = lives - guesses.length;
+        }
+
+        var win = guesses.filter(function(e) {
+            return unique_char(chosenWordA).indexOf(e) < -1;
+        });
+
+        CheckGuess(guess, chosenWordA);
+        
+    }
+
+
 
     //game start
     displayUnderscores(chosenWordA);
