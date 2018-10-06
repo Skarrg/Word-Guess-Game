@@ -1,0 +1,22 @@
+* {
+background-color: white;
+max-width: 1080px;
+margin: auto;
+}
+
+#wordbox  {
+    float: left;
+    height: 100px;
+    width: 500px;
+    background-color: #c57932;
+    margin: 20px;
+}
+
+#guessesbox, #winsbox, #livesbox, #guessbox {
+    float: right;
+    height: 100px;
+    width: 200px;
+    border: thick;
+    margin: 20px;
+}
+ 

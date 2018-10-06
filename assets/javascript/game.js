@@ -30,15 +30,15 @@ window.onload = function () {
         for (var i = 0; i < chosenWordA.length; i++) {
             var newDiv = document.createElement('div');
             size = wordbox.offsetWidth / chosenWordA.length;
-
+           
             //format it it up
             newDiv.innerHTML = "_";
-            newDiv.style.width = size + 'px';
+            newDiv.style.width = 0.8 * size + 'px';
             newDiv.style.height = 0.8 * size + 'px';
             newDiv.style.borderBottom = '10px';
-            newDiv.style.marginRight = '10px';
+            newDiv.style.margin = '5px';
             newDiv.style.textAlign = 'center';
-            newDiv.style.float = 'right';
+            newDiv.style.float = 'left';
 
             //add id to be easier read
             newDiv.classList.add(chosenWordA[i]);
@@ -51,9 +51,9 @@ window.onload = function () {
     function unique_char(str1) {
         var str = str1;
         var uniqueL = [];
-        for (var x = 0; x < str.length; x++) {
-            if (uniqueL.indexOf(str.charAt(x)) == -1) {
-                uniqueL += str[x];
+        for (var i = 0; i < str.length; i++) {
+            if (uniqueL.indexOf(str.charAt(i)) == -1) {
+                uniqueL += str[i];
             }
         }
         return uniqueL;
