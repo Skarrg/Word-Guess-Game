@@ -50,9 +50,9 @@ window.onload = function () {
     //identify unique characters in the array
     function unique_char(str1) {
         var str = str1;
-        var uniqueL = ' ';
+        var uniqueL = [];
         for (var x = 0; x < str.length; x++) {
-            if uniqueL.indexOf(str.charAt(x)) == -1) {
+            if (uniqueL.indexOf(str.charAt(x)) == -1) {
                 uniqueL += str[x];
             }
         }
